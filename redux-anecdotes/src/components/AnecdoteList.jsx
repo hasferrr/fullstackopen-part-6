@@ -32,7 +32,6 @@ const AnecdoteList = () => {
 
   return (
     <>
-      <h2>Anecdotes</h2>
       {sortAnecdotes(anecdotes).map((anecdote) => (
         <div key={anecdote.id}>
           <Anecdote
