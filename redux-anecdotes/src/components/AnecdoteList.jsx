@@ -22,7 +22,14 @@ Anecdote.propTypes = {
 }
 
 const AnecdoteList = () => {
-  const anecdotes = useSelector((state) => state)
+  const anecdotes = useSelector(({ anecdote, filter }) => {
+    if (filter === '') {
+      return anecdote
+    }
+    return anecdote.filter((ann) =>
+      ann.content.toLowerCase().includes(filter.toLowerCase())
+    )
+  })
   const dispatch = useDispatch()
 
   const vote = (id) => dispatch(incrementVote(id))
