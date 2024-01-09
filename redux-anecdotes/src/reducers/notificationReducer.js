@@ -21,4 +21,16 @@ export const {
   setAddedNotification,
   removeNotification,
 } = notificationSlice.actions
+
+export const setNotification = (type, message, timeout) => (dispatch) => {
+  if (type === 'vote') {
+    dispatch(setVotedNotification(message))
+  } else if (type === 'add') {
+    dispatch(setAddedNotification(message))
+  }
+  setTimeout(() => {
+    dispatch(removeNotification())
+  }, timeout)
+}
+
 export default notificationSlice.reducer
