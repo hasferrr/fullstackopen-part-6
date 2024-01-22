@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery, useQueryClient } from '@tanstack/react-query'
 import AnecdoteForm from './components/AnecdoteForm'
 import Notification from './components/Notification'
 import { getAnecdotes } from './services/anecdotes'
@@ -12,6 +12,7 @@ const App = () => {
     queryKey: ['anecdotes'],
     queryFn: getAnecdotes,
     retry: 1,
+    refetchOnWindowFocus: false,
   })
 
   if (result.isLoading) {
